@@ -1,0 +1,52 @@
+sit:
+  duration: 20
+  say: Sit and work
+  play: Blow
+
+stand:
+  duration: 10
+  say: stand and work
+  play: Ping
+
+break:
+  duration: 10
+  say: Take a break
+  play: Ping
+
+work:
+  - sit
+  - stand
+  - sit
+  - break
+
+squats:
+  say: Squats
+
+leg_lifts:
+  say: Leg lifts
+
+clam_shell:
+  say: clam shell
+
+done:
+  duration: 0
+  say: Done
+
+leg_set:
+  - squats
+  - leg_lifts
+  - clam_shell
+  - done
+
+"10":
+  - say: Ten minute timer
+    duration: 10
+  - say: Done
+    play: Ping
+    duration: 0
+
+test:
+  - say: start
+    duration: .1
+  - say: end
+    duration: 0
