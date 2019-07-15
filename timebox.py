@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import time
+import datetime
 import logging
 import yaml
 from pathlib import Path
@@ -57,6 +58,11 @@ def run(boxes, box):
         sleep(duration)
 
 
+def log_box(start_time, name):
+    with open("timebox_log.csv", "at") as f:
+        f.write(f"{start_time.isoformat()},{name}\n")
+
+
 def main():
     if len(sys.argv) == 1:
         print("Usage: python timebox <box_name> <box_name>")
@@ -72,7 +78,9 @@ def main():
 
     for box_name in sys.argv[1:]:
         if box_name in boxes:
+            now = datetime.datetime.now()
             run(boxes, boxes[box_name])
+            log_box(now, box_name)
         else:
             logging.error("The box %s does not exist in %s.", box_name, filename)
 
